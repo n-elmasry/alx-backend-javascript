@@ -34,7 +34,7 @@ export default class Pricing {
   }
 
   // static method
-  convertPrice(amount, conversionRate) {
+  static convertPrice(amount, conversionRate) {
     if (typeof amount !== 'number') throw new TypeError('Amount must be a number.');
     if (typeof conversionRate !== 'number') throw new TypeError('Conversion rate must be a number.');
 
