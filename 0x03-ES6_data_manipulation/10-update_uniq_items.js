@@ -1,5 +1,5 @@
 export default function updateUniqueItems(items) {
-  if (!items instanceof Map) throw new Error('Cannot process');
+  if (items instanceof Map){
 
   for (const [key, value] of items) {
     if (value === 1) {
@@ -7,5 +7,7 @@ export default function updateUniqueItems(items) {
     }
   }
 
-  return new Map(items);
+  return new Map(items);}
+
+  throw new Error('Cannot process');
 }
