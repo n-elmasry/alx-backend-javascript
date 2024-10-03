@@ -14,7 +14,6 @@ describe('sendPaymentRequestToApi', function () {
     });
 
     afterEach(function () {
-        // Restore the original method to prevent side effects
         calculateNumberSpy.restore();
     });
 
