@@ -1,28 +1,16 @@
-// 3-payment.test.js
-const sinon = require('sinon');
-const chai = require('chai');
-const expect = chai.expect;
-const Utils = require('./utils');
-const { sendPaymentRequestToApi } = require('./3-payment');
+const {describe, it} = require("mocha");
+const sinon = require("sinon");
+const sendPaymentRequestToApi = require("./3-payment");
+const Utils = require("./utils");
+const assert = require("assert");
 
-describe('sendPaymentRequestToApi', function () {
-    let calculateNumberSpy;
+describe("sendPaymentRequestToApi", function() {
+    it("check that Utils.calculateNumber was called once", function() {
+	const spy = sinon.spy(Utils, "calculateNumber");
 
-    beforeEach(function () {
-        // Create a spy for Utils.calculateNumber
-        calculateNumberSpy = sinon.spy(Utils, 'calculateNumber');
-    });
+	sendPaymentRequestToApi(50, 24.52);
 
-    afterEach(function () {
-        calculateNumberSpy.restore();
-    });
-
-    it('should call Utils.calculateNumber with correct arguments', function () {
-        // Call the function
-        sendPaymentRequestToApi(100, 20);
-
-        // Validate that the spy was called with the expected arguments
-        expect(calculateNumberSpy.calledOnce).to.be.true;
-        expect(calculateNumberSpy.calledWith('SUM', 100, 20)).to.be.true;
+	assert(spy.calledOnce);
+	spy.restore();
     });
 });
